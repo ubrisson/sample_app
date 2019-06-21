@@ -93,4 +93,9 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     assert_redirected_to @user
     assert session[:forwarding_url].nil?
   end
+
+  test "should redirect index when not logged in" do
+    get users_path
+    assert_redirected_to login_url
+  end
 end
